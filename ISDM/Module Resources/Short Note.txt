@@ -1,0 +1,270 @@
+-- Year 1 Semester 2 | ISDM 1 2 3 4 5 6 7 LABS FOR THE MID EXAM--
+----------------------------------------------------------------------------------------
+/* ISDM Lab 01 / 02
+Excercises SQL File */
+
+--Section One--
+
+-- Q1 Find all information about the students --
+SELECT * from student;
+
+--Q2 Find the module name and the no of credits for a module.--
+SELECT Mname, NoOfCredits FROM Module;
+
+--Q3 Find students whose name start with letter 'A.--
+SELECT *
+from Student
+where Sname LIKE 'A%';
+
+--Q4  Find the names of the students who were born before 1996/01/01.--
+SELECT *
+from Student
+where dob < '1996/01/01';
+
+--Q5 Find name and NIC of students who are from ‘Colombo’ District.--
+SELECT Sname, NIC
+from Student
+where address LIKE '%colombo%';
+
+--Q6 Find the students whose names are starting from ‘K’ and following ‘DS’ course.--
+SELECT *
+from Student
+where Sname LIKE 'k%' AND CID = 'DS';
+
+--Q7 Select the students who are following either ‘DS’ or ‘IT’ courses.--
+SELECT *
+from Student
+where CID = 'DS' OR CID = 'IT'
+ --Or--
+SELECT *
+from Student 
+Where CID IN('DS' , 'IT');
+
+
+--Section Two--
+--Q1 Select all the students sorted by the sname column.--
+SELECT *
+from Student
+ORDER BY Sname;
+
+--Q2 Select all students from the "Student" table, sorted DESCENDING by the "NIC" column.--
+SELECT *
+FROM Student
+ORDER BY NIC DESC;
+
+--Q3 Select all students from the "Student" table, 
+--   sorted ASCENDING by the "sname" column and descending by the "CID" column--
+SELECT *
+FROM Student
+ORDER by Sname ASC, CID DESC;
+
+----------------------------------------------------------------------------------------
+/* ISDM Lab 03
+Excercises SQL File */  
+-- Aggregate Functions --
+
+--a. How many students are in the university?--
+select COUNT(SID) as 'Total Number of Students'
+from Student;
+
+--b. How many courses are offered by the university?--
+select count(CID)
+from Course;
+
+--c. Display the above result with the title “Number of courses”.--
+select count(CID) as 'Total Number Of Courses'
+from Course;
+
+--d. How many modules are there which have 03 credits only?--
+select COUNT(Mcode)
+FROM Module
+WHERE NoOfCredits = 3;
+
+--e. If one student wants to register all courses at ones, 
+--   what is the total course fee that he/she wants to pay?--
+select SUM(c_fee) as 'Total Course fee'
+FROM Course;
+
+--f. What is the highest course fee?--
+select MAX(c_fee) as 'Highest Course Fee'
+FROM Course;
+
+--g. What is the lowest course fee?--
+SELECT min(c_fee) as 'Lowest Course Fee'
+FROM Course;
+
+--h. What is the Average courses fee of a course?--
+SELECT AVG(c_fee) as 'Avg of fee'
+FROM Course;
+
+-----------------------------------------------------------------------------------------------
+/* ISDM Lab 04
+Excercises SQL File */
+
+--a. Display the total number of modules in each course?--
+SELECT CID, COUNT(Mcode) AS 'No of Modules'
+FROM Offers
+GROUP BY CID;
+
+--b. How many students are there for each course? 
+--   Rename the count as ‘Number of Student’.--
+SELECt CID, COUNT(SID) AS 'No of Students'
+FROM Student
+Group by CID;
+
+--c. What is the number of Modules offered by each course in each academic year?--
+SELECT CID, Accadamic_year, COUNT(Mcode) -- As 'Nummber of Modules'
+From Offers
+Group BY CID, Accadamic_year;
+
+--d. What is the number of Modules in Semester 02 only?--
+SELECT CID, Accadamic_year, COUNT(Mcode) -- As 'Nummber of Modules'
+From Offers
+where Semester = 2
+Group BY CID, Accadamic_year;
+
+--e. Sort the results of Question (d.) according to the ascending order of CID.--
+SELECT CID, Accadamic_year, COUNT(Mcode) -- As 'Nummber of Modules'
+From Offers
+where Semester = 2
+Group BY CID, Accadamic_year
+ORDER BY CID;  --No need to use ASC keyword, (Accending Order by default)--
+
+----------------------------------------------------------------------------------------------------
+/* ISDM Lab 05
+Excercises SQL File */
+
+--Example--
+--** What are the courses which offer more than 2 modules in semester 01?--
+SELECt *
+FROM Offers; --To check offers table
+
+SELECT CID, COUNT(Mcode)
+FROM offers
+where Semester = 1
+Group by CID
+HAVING COUNT(Mcode) > 2;
+
+--a) Display the number of students for each course? List the Course_ID of courses only if there are less than 10 students for the course.
+SELECT CID
+from Student
+Group by CID
+having COUNT(SID) < 10;
+
+--b) List the Course_ID and the number of modules offered for each course. 
+--   Display only the course ids which have more than 3 modules offered in it. 
+--   Sort the result according to the ascending order of the module count.
+SELECT CID, Count(Mcode)
+from Offers 
+group by CID 
+having COUNT(Mcode) > 3
+Order by COUNT(Mcode) 
+
+-- OR --
+SELECT CID, Count(Mcode) AS 'No of Modules'
+from Offers 
+group by CID 
+having COUNT(Mcode) > 3
+Order by [No of Modules]  --You can use pre-defined name instead of COUUNT()
+
+--c) Display the course id, academic year and the number of modules offered. 
+--   The number of modules offered should be less than 10.
+SELECT CID, Accadamic_year
+from offers 
+group by CID, Accadamic_year
+having count(Mcode) < 10;
+
+--d) List the courses that offer more than 2 modules for year 3 students?
+SELECT CID
+from Offers
+where Accadamic_year = 'Y3' --cuz datatype is varchar
+group by CID
+having COUNT(Mcode) > 2;
+
+--------------------------------------------------------------------------------------------------------
+/* ISDM Lab 06
+Excercises SQL File */
+
+--a) Make a list of the student ID, 
+--   name and the name of the course the student is following.
+SELECT * from Student --To view
+SELECT * from Course  --To view
+
+SELECT s.SID, s.Sname, c.Cname
+from Student s, Course c
+where s.CID = c.CID;
+
+--b) Make a list of the CIDs and the names of the modules 
+--   offered by those courses.
+select o.CID, M.Mname
+FROM Offers o, MOdule M
+Where O.Mcode = M.Mcode;
+
+--c) Make a list of course names and the names of modules offered.
+SELECT c.Cname , m.Mname
+From Course c , Offers o, Module m
+Where c.CID = o.CID AND o.Mcode = o.Mcode;
+----------------------
+select * from Course; --To view
+select * from Module;
+select * from Offers;
+----------------------
+--d) What are the ID and names of the students who have registered for
+--   the course by paying a registration fee of more than 1 Lak?
+SELECT S.SID, S.sname
+From Student s, Course c
+where s.CID = c.CID AND C_fee > 100000;
+
+--e) What are the names of modules offered to year I students 
+--   by the Information Technology Course?
+SELECT Mname , Accadamic_year , CID
+From Module M, Offers o
+where M.Mcode = o.Mcode AND Accadamic_year = 'Y1' AND CID =  'IT';
+
+----------------------------------------------------------------------------------------------
+/* ISDM Lab 07
+Excercises SQL File */
+
+-- a)How many Students are there in each course? List the CID and the number of students.
+SELECT c.CID , COUNT(*) as 'Number of Student'
+FROM Student s, Course c
+where S.CID = C.CID
+Group by c.CID;
+
+-- b)How many Students are there in each course? List the course name and the number of Students.
+SELECT c.Cname , COUNT(*) as 'Number of Student'
+FROM Student s, Course c
+where S.CID = C.CID
+Group by c.Cname;
+
+--c)What are the courses which offer more than 2 modules for year 1 students?
+----------------------
+select * from Course; --To view
+select * from Module;
+select * from Offers;
+----------------------
+Select c.CID , c.Cname
+from Course c, Offers o
+where c.CID = o.CID AND o.Accadamic_year = 'Y1'
+group by c.CID, c.Cname
+having COUNT(o.Mcode) > 2;
+
+--d)What are the courses which offer more than 2 modules for any academic year? 
+--  List the course names, academic year and the no of modules offered. 
+--  Sort the result according to the no of modules.
+
+Select o.Accadamic_year, c.CID , c.Cname ,COUNT(o.Mcode) as 'Number Of Modules'
+from Course c, Offers o
+where c.CID = o.CID 
+group by c.CID, c.Cname ,o.Accadamic_year
+having COUNT(o.Mcode) > 2
+order by COUNT(o.Mcode);
+----OR-----
+Select o.Accadamic_year, c.CID , c.Cname ,COUNT(o.Mcode) as 'Number Of Modules'
+from Course c, Offers o
+where c.CID = o.CID 
+group by c.CID, c.Cname ,o.Accadamic_year
+having COUNT(o.Mcode) > 2
+order by [Number Of Modules];
+
+---------------------------------------------------------------------------------------------
