@@ -1,0 +1,20 @@
+C:\Users\USER\source\repos\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\USER\source\repos\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\USER\source\repos\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\USER\source\repos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Users\USER\source\repos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\USER\source\repos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\USER\source\repos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\USER\source\repos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\USER\source\repos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Malki\OneDrive\Desktop\2nd Sem\2022 Jan Batch my\ISDM\10\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Malki\OneDrive\Desktop\2nd Sem\2022 Jan Batch my\ISDM\10\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Malki\OneDrive\Desktop\2nd Sem\2022 Jan Batch my\ISDM\10\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Malki\OneDrive\Desktop\2nd Sem\2022 Jan Batch my\ISDM\10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\Malki\OneDrive\Desktop\2nd Sem\2022 Jan Batch my\ISDM\10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.SuggestedBindingRedirects.cache
+C:\Users\Malki\OneDrive\Desktop\2nd Sem\2022 Jan Batch my\ISDM\10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Malki\OneDrive\Desktop\2nd Sem\2022 Jan Batch my\ISDM\10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Malki\OneDrive\Desktop\2nd Sem\2022 Jan Batch my\ISDM\10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\Malki\OneDrive\Desktop\2nd Sem\2022 Jan Batch my\ISDM\10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\Malki\OneDrive\Desktop\2nd Sem\2022 Jan Batch my\ISDM\10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Malki\OneDrive\Desktop\2nd Sem\2022 Jan Batch my\ISDM\10\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
